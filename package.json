@@ -2,7 +2,7 @@
   "name": "Logins",
   "version": "1.0.0",
   "engines": {
-    "node": "7.5.0",
+    "node": "9.10.0",
     "npm": "4.0.5"
   },
   "description": "A Simple Login Example using Node.js, Mongo and Redis",
@@ -21,7 +21,7 @@
     "Redis",
     "Login"
   ],
-  "author": "Cody Van De Mark",
+  "author": "Nick Henderson",
   "license": "Apache 2.0",
   "dependencies": {
     "body-parser": "^1.15.0",
