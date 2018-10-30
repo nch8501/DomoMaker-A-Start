@@ -37,7 +37,7 @@ const handleSignup = (e) =>{
 
 const LoginWindow = (props) =>{
   return(
-  <form id="loginForm" name "loginForm"
+  <form id="loginForm" name="loginForm"
         onSubmit={handleLogin}
         action="/login"
         method='POST'
@@ -86,3 +86,32 @@ const createSignupWindow = (csrf) =>{
     document.querySelector("#content"),
   );
 };
+
+const setup = (csrf) =>{
+  const loginButton = document.querySelector("#loginButton");
+  const signupButton = document.querySelector("#signupButton");
+  
+  signupButton.addEventListener("click", (e) =>{
+    e.preventDefault();
+    createSignupWindow(csrf);
+    return false;
+  });
+  
+  loginButton.addEventListener("click", (e) =>{
+    e.preventDefault();
+    createLoginWindow(csrf);
+    return false;
+  });
+  
+  createLoginWindow(csrf); //default view
+};
+
+const getToken = () =>{
+  sendAjax('GET', '/getToken', null, (result) =>{
+    setup(result.csrfToken);
+  });
+};
+
+$(document).ready(function(){
+  getToken();
+});
